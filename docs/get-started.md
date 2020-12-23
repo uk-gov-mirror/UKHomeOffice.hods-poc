@@ -5,8 +5,8 @@ This guide explains how to create prototypes using the Home Office Design System
 
 ### 1. Set up your repository
 
-Set up a blank code repository in [GitHub] as
-extra CI support is provided through [GitHub Actions].
+Set up a blank code repository in [GitHub](https://github.com/) as
+extra CI support is provided through [GitHub Actions](https://github.com/features/actions).
 
 
 ### 2. Run the following commands locally
@@ -19,7 +19,7 @@ mkdir YOUR-PROTOTYPE
 cd YOUR-PROTOTYPE
 git init
 git remote add origin git@github.com:YOUR_USER/YOUR-PROTOTYPE.git
-npm init @hods
+npm init @hods prototype
 ```
 
 
