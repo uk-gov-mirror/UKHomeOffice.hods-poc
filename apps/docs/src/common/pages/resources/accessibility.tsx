@@ -8,7 +8,7 @@ const Page: FC<PageProps> = ({ location }) => (
   <div className="govuk-grid-row">
     <div className="govuk-grid-column-one-third">
       <aside>
-        <h2>Resources</h2>
+        <h2>Get started</h2>
         <ul className="plain">
           <li><A href="/resources/accessibility">Accessibility</A></li>
           <li><A href="/resources/government">GOV.UK</A></li>
