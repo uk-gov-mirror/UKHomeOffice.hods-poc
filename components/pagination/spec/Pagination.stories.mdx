@@ -1,0 +1,39 @@
+import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
+import { Pagination } from '../src/Pagination';
+import readMe from '../README.md';
+
+<Meta
+  title="pagination"
+  component={ Pagination }
+  parameters={ {
+    chromatic: { viewports: [640, 480] },
+    description: 'Component to allow separating long tables into separate tables',
+    jest: ['Pagination'],
+    notes: readMe
+  } }
+/>
+
+# pagination
+
+Component to allow separating long tables into separate tables
+WRITE MORE DESCRIPTION HERE.
+
+<Preview withToolbar>
+  <Story name="Pagination">
+    <Pagination />
+  </Story>
+</Preview>
+
+<Props of={ Pagination } />
+
+
+## Stories
+### Standard
+
+A standard pagination.
+
+<Preview>
+  <Story name="Standard">
+    <Pagination />
+  </Story>
+</Preview>
