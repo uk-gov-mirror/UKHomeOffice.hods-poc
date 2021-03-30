@@ -1,28 +1,74 @@
 import { FC, createElement as h } from 'react';
 import { StandardProps, classBuilder } from '@not-govuk/component-helpers';
+import { A } from '@not-govuk/anchor';
 
 import '../assets/Pagination.scss';
 
 export type PaginationProps = StandardProps & {
-  /** Description for the 'heading' prop */
-  heading?: string
+  results: number
+  resultsPerPage: number
+  page: number
+  previous?: string
+  pages?: number[]
+  next?: string
 };
 
-export const Pagination: FC<PaginationProps> = ({ children, classBlock, classModifiers, className, heading, ...attrs }) => {
-  const classes = classBuilder('hods-pagination', classBlock, classModifiers, className);
-  const title = heading || 'pagination';
+export const Pagination: FC<PaginationProps> = ({
+  children,
+  classBlock,
+  classModifiers,
+  className,
+  results,
+  resultsPerPage,
+  previous,
+  page,
+  pages,
+  next,
+  ...attrs
+}) => {
+  const classes = classBuilder(
+    'hods-pagination',
+    classBlock,
+    classModifiers,
+    className
+  );
+
+  var resultsFrom: number = ((page-1)*resultsPerPage)+1
+  var resultsTo: number = resultsTo = parseInt(resultsFrom) + parseInt(resultsPerPage) - 1
+  {resultsTo>results ? resultsTo=results : null }
+
+  console.log(resultsTo>results)
+
 
   return (
-    <div class="hods-pagination" aria-label="Pagination">
-      <div class="hods-pagination__summary">Showing 101 - 150 of 246 results</div>
-      <ul class="hods-pagination__list-items">
-        <li class="hods-pagination__item"><a class="hods-pagination__link" href="#0" aria-label="Previous page"><span aria-hidden="true" role="presentation">&laquo;</span> Previous</a></li>
-        <li class="hods-pagination__item"><a class="hods-pagination__link" href="#0" aria-label="Page 1">1</a></li>
-        <li class="hods-pagination__item"><a class="hods-pagination__link" href="#0" aria-label="Page 2">2</a></li>
-        <li class="hods-pagination__item"><a class="hods-pagination__link current" href="#0" aria-current="true" aria-label="Page 3, current page">3</a></li>
-        <li class="hods-pagination__item"><a class="hods-pagination__link" href="#0" aria-label="Page 4">4</a></li>
-        <li class="hods-pagination__item"><a class="hods-pagination__link" href="#0" aria-label="Page 5">5</a></li>
-        <li class="hods-pagination__item"><a class="hods-pagination__link" href="#0" aria-label="Next page">Next <span aria-hidden="true" role="presentation">&raquo;</span></a></li>
+    <div className={classes()}>
+      <div className={classes('summary')}>Showing {resultsFrom} - {resultsTo} of {results} results</div>
+      <ul className={classes('list-items')}>
+        <li className={classes('item')} id="prevButton">
+          <A className={classes('link')} href="#2">
+            <span aria-hidden="true" role="presentation">&laquo;</span> Previous
+          </A>
+        </li>
+        <li className={classes('item')}>
+          {parseInt(page)>2 ? <A className={classes('link')} href="#1">{page-2}</A> : null}
+        </li>
+        <li className={classes('item')}>
+          {parseInt(page)>1 ? <A className={classes('link')} href="#2">{page-1}</A> : null}
+        </li>
+        <li className={classes('item')}>
+          <A className={classes('link-current')} href="#3" aria-current="true">{page}</A>
+        </li>
+        <li className={classes('item')}>
+          {resultsTo==results ? null : <A className={classes('link')} href="#4">{page-(-1)}</A>}
+        </li>
+        <li className={classes('item')}>
+          {resultsTo==results ? null : <A className={classes('link')} href="#5">{page-(-2)}</A>}
+        </li>
+        <li className={classes('item')} id="nextButton">
+          <A className={classes('link')} href="#5">
+            Next <span aria-hidden="true" role="presentation">&raquo;</span>
+          </A>
+        </li>
       </ul>
     </div>
   );
