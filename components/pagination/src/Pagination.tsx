@@ -1,4 +1,4 @@
-import { FC, createElement as h } from 'react';
+import React, { FC, createElement as h } from 'react';
 import { StandardProps, classBuilder } from '@not-govuk/component-helpers';
 import { A } from '@not-govuk/anchor';
 
@@ -34,11 +34,8 @@ export const Pagination: FC<PaginationProps> = ({
   );
 
   var resultsFrom: number = ((page-1)*resultsPerPage)+1
-  var resultsTo: number = resultsTo = parseInt(resultsFrom) + parseInt(resultsPerPage) - 1
-  {resultsTo>results ? resultsTo=results : null }
-
-  console.log(resultsTo>results)
-
+  var resultsTo: number = resultsFrom + (resultsPerPage - 1)
+  {resultsTo>results ? resultsTo=results : null}
 
   return (
     <div className={classes()}>
@@ -50,10 +47,10 @@ export const Pagination: FC<PaginationProps> = ({
           </A>
         </li>
         <li className={classes('item')}>
-          {parseInt(page)>2 ? <A className={classes('link')} href="#1">{page-2}</A> : null}
+          {page>2 ? <A className={classes('link')} href="#1">{page-2}</A> : null}
         </li>
         <li className={classes('item')}>
-          {parseInt(page)>1 ? <A className={classes('link')} href="#2">{page-1}</A> : null}
+          {page>1 ? <A className={classes('link')} href="#2">{page-1}</A> : null}
         </li>
         <li className={classes('item')}>
           <A className={classes('link-current')} href="#3" aria-current="true">{page}</A>
@@ -62,7 +59,7 @@ export const Pagination: FC<PaginationProps> = ({
           {resultsTo==results ? null : <A className={classes('link')} href="#4">{page-(-1)}</A>}
         </li>
         <li className={classes('item')}>
-          {resultsTo==results ? null : <A className={classes('link')} href="#5">{page-(-2)}</A>}
+          {resultsTo <= results - resultsPerPage ? <A className={classes('link')} href="#5">{page-(-2)}</A> : null}
         </li>
         <li className={classes('item')} id="nextButton">
           <A className={classes('link')} href="#5">

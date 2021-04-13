@@ -21,7 +21,9 @@ import Pagination from '@hods/pagination';
 
 export const MyComponent = props => (
   <Pagination
-    // WRITEME
+    results="[number_of_results]"
+    resultsPerPage="[number_of_results_in_each_page]"
+    page="[page_currently_viewed]"
   />
 );
 
