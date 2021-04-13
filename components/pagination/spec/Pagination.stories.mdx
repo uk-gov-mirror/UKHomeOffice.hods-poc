@@ -15,8 +15,7 @@ import readMe from '../README.md';
 
 # pagination
 
-Component to allow separating long tables into separate tables
-WRITE MORE DESCRIPTION HERE.
+Component to allow separating long tables into separate tables with links to each
 
 <Preview withToolbar>
   <Story name="Pagination">
@@ -83,6 +82,21 @@ A pagination component on the last page of results.
 
 <Preview>
   <Story name="End">
+    <Pagination
+      results="737"
+      resultsPerPage="25"
+      page="30"
+    />
+  </Story>
+</Preview>
+
+
+### Near end
+
+A pagination component on the second last page of results.
+
+<Preview>
+  <Story name="NrEnd">
     <Pagination
       results="737"
       resultsPerPage="25"

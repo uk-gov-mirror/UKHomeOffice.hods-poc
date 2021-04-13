@@ -239,6 +239,7 @@ importers:
       typescript: ^3.9.2
   components/pagination:
     dependencies:
+      '@not-govuk/anchor': 0.2.6
       '@not-govuk/component-helpers': 0.2.6
     devDependencies:
       '@mdx-js/react': 1.6.22
@@ -249,6 +250,7 @@ importers:
       typescript: 3.9.7
     specifiers:
       '@mdx-js/react': ^1.6.5
+      '@not-govuk/anchor': ^0.2.6
       '@not-govuk/component-helpers': ^0.2.0
       '@not-govuk/component-test-helpers': ^0.2.0
       '@types/react': ^16.9.35

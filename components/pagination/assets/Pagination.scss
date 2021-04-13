@@ -1,8 +1,12 @@
+@import "@not-govuk/sass-base";
+
 .hods-pagination {
   &__summary {
     font-family: 'Inter UI', sans-serif;
+    @include govuk-font(16);
     -webkit-font-smoothing: antialiased;
-    padding: 8px 0;
+    @include govuk-responsive-padding(2, "bottom");
+    @include govuk-responsive-padding(2, "top");;
     float: right;
   }
 
@@ -17,55 +21,35 @@
 
   &__link {
     display: inline-block;
-    padding: 5px 10px;
+    @include govuk-font(16);
+    @include govuk-responsive-padding(1, "bottom");
+    @include govuk-responsive-padding(1, "top");
+    @include govuk-responsive-padding(2, "left");
+    @include govuk-responsive-padding(2, "right");
     text-decoration: none;
 
     &:hover, &:focus {
-      background: #F8F8F8;
-      outline: 3px solid #FFBF47;
+      @include govuk-font(16);
+      background: govuk-colour("white");
+      outline: 3px solid govuk-colour("yellow");
     }
 
     &-current {
-      color: #0B0C0C;
-      font-weight: 700;
-      padding: 5px 10px;
+      color: govuk-colour("black");
+      @include govuk-font(16);
+      @include govuk-responsive-padding(1, "bottom");
+      @include govuk-responsive-padding(1, "top");
+      @include govuk-responsive-padding(2, "left");
+      @include govuk-responsive-padding(2, "right");
       border: none;
       pointer-events: none;
       cursor: default;
 
       &:hover, &:focus {
-        color: #0B0C0C;
+        color: govuk-colour("black");
+        text-decoration: none;
         background: none;
       }
     }
   }
 }
-
-
-// .padding {
-//   padding-left: 15px;
-// }
-
-//
-// li {
-//   display: inline-block;
-//   a {
-//     @extend .bold-small;
-//     color: #005EA5;
-//     display: inline-block;
-//     padding: 15px 5px 10px 5px;
-//     margin-right: 15px;
-//     text-decoration: none;
-//
-//     &:focus {
-//       outline: 0;
-//     }
-//   }
-//   &.active a,
-//   &.active a:hover {
-//     color: #005EA5;
-//     -webkit-box-shadow: inset 0px -5px 0px 0px #005EA5;
-//     -moz-box-shadow: inset 0px -5px 0px 0px #005EA5;
-//     box-shadow: inset 0px -5px 0px 0px #005EA5;
-//   }
-// }
