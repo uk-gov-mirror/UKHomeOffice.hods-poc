@@ -8,6 +8,7 @@ importers:
       '@babel/preset-typescript': 7.10.4_@babel+core@7.11.4
       '@hods/plop-pack': link:lib/plop-pack
       '@mdx-js/react': 1.6.11_react@16.14.0
+      '@not-govuk/anchor': 0.2.9_609c94966c085296a907b147b2752d64
       '@not-govuk/components': 0.2.6_f9151570e7684926ba84f75dc8f166c3
       '@not-govuk/docs-components': 0.2.6_e0b71065dafb84c9aad0ad10a56d88b7
       '@not-govuk/storybook-preset': 0.2.6_8cfa604fd4195d0d5b8248a23054d5f1
@@ -49,6 +50,7 @@ importers:
       '@babel/preset-typescript': ^7.10.4
       '@hods/plop-pack': workspace:^0.1.0
       '@mdx-js/react': ^1.6.5
+      '@not-govuk/anchor': ^0.2.9
       '@not-govuk/components': ^0.2.6
       '@not-govuk/docs-components': ^0.2.6
       '@not-govuk/storybook-preset': ^0.2.6
@@ -5698,6 +5700,20 @@ packages:
       react-router-dom: ^5.1.5
     resolution:
       integrity: sha512-bBidzAi+uw9OxKaFNOadJa+Ai/Rfx9u8ob8xjy5qVQZywcoEm32mfD/5Gspq3VHdgsTDGaBAt65rwqEZX2d38w==
+  /@not-govuk/anchor/0.2.9_609c94966c085296a907b147b2752d64:
+    dependencies:
+      '@not-govuk/component-helpers': 0.2.9
+      '@not-govuk/docs-components': 0.2.6_e0b71065dafb84c9aad0ad10a56d88b7
+      '@not-govuk/route-utils': 0.2.6_react-router-dom@5.2.0
+      react: 16.14.0
+      react-router-dom: 5.2.0_react@16.14.0
+    dev: false
+    peerDependencies:
+      '@not-govuk/docs-components': ^0.2.0
+      react: ^16.9.35
+      react-router-dom: ^5.1.5
+    resolution:
+      integrity: sha512-EyI0sTiFCQUrQfrFbefpn8ny7U9n8WL1bNbx0Vo0ngrrHRNbNf7EyPxJc7tkxZCCjB/iRSDtnXjAbG+2n1anbw==
   /@not-govuk/anchor/0.2.9_f0985349df48299f7cc281311e9bebca:
     dependencies:
       '@not-govuk/component-helpers': 0.2.9
@@ -6375,7 +6391,6 @@ packages:
       qs: 6.9.6
       react-router-dom: 5.2.0_react@16.14.0
       url-parse: 1.5.1
-    dev: true
     peerDependencies:
       react-router-dom: ^5.1.5
     resolution:
