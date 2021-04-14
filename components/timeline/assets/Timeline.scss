@@ -1,86 +1,71 @@
-@import "@not-govuk/sass-base";
+@import "@hods/sass-base";
 @import "govuk-frontend/govuk/helpers/_colour.scss";
 
 .hods-timeline {
   overflow: hidden;
   position: relative;
 
-  p {
-    text-decoration: inherit;
-    font-size: inherit;
-  }
-
   &__item {
     @include govuk-responsive-padding(2, "bottom");
-    @include govuk-responsive-padding(5, "left");
-    /* padding size 6 looks better with smaller viewports. Can media queries
-    be used here? */
+    @media (max-width: 660px) {
+      @include govuk-responsive-padding(7, "left");
+    }
+    @media (min-width: 661px) {
+      @include govuk-responsive-padding(5, "left");
+    }
     position: relative;
 
     &:hover {
-      background-color: #E3E3E3;
+      background-color: govuk-colour("light-grey");
     }
 
-    &:before {
-      background-color: #1d70b8;
+    &:before { /* styling for lines in margin */
+      background-color: govuk-colour("blue");
       content: "";
-      @include govuk-responsive-padding(1, "top"); /* size of blue lines */
+      @include govuk-responsive-padding(1, "top");
       @include govuk-responsive-padding(3, "right");
       left: 0;
       position: absolute;
       @include govuk-responsive-margin(1, "top");
-
       z-index: 1;
     }
   }
 
-  &:before {
-    background-color: #1d70b8;
+  &:before { /* styling for lines in margin */
+    background-color: govuk-colour("blue");
     content: "";
     height: 100%;
     left: 0;
     position: absolute;
-    @include govuk-responsive-margin(1, "top");
-    /* this is more restricive than using px. The ideal margin is around 1.5
-    using this govuk element, but that doesnt exist. I can only use either 1 or
-    2.  1 looks better when the viewport is narrow, and 2 looks better when the
-    viewport is wide. Can @media queries be used here?
-    mobile:  320px,
-    tablet:  641px,
-    desktop: 769px
-    */
+    @media (max-width: 660px) {
+      @include govuk-responsive-margin(1, "top");
+    }
+    @media (min-width: 661px) {
+      @include govuk-responsive-margin(2, "top");
+    }
     @include govuk-responsive-padding(1, "left"); /* size of blue "border" */
     z-index: 1;
   }
 
   &__title {
     @include govuk-font(16, 'bold');
-    webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     display: inline;
   }
 
   &__by {
     @include govuk-font(16);
     color: govuk-colour('dark-grey');
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     display: inline;
   }
 
   &__date {
-    @include govuk-font(16); /* does nothing? */
+    @include govuk-font(14);
     color: govuk-colour('dark-grey');
     @include govuk-responsive-margin(0, "top");
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   &__description {
-    @include govuk-font(16);
+    @include govuk-font(14);
     @include govuk-responsive-margin(5, "top");
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
   }
 }

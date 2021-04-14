@@ -1,5 +1,5 @@
 Hods - Timeline
-===
+===============
 
 A timeline of events
 
@@ -20,9 +20,19 @@ import React, { createElement as h } from 'react';
 import Timeline from '@hods/timeline';
 
 export const MyComponent = props => (
-  <Timeline
-    // WRITEME
-  />
+  <Timeline items={[
+    {
+      action: 'Issue under investigation',
+      by: 'Douglas Pollock',
+      date: '15 Mar 2021 10:04am',
+      description: 'This is a description of the event. This field accepts unformatted text only'
+    },
+    {
+      action: 'Issue raised on GitHub',
+      date: '25 Jan 2021 9:35am',
+      description: 'This is a description of the event.'
+    }
+  ]} />
 );
 
 export default MyComponent;
