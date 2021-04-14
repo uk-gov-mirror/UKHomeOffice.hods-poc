@@ -43,7 +43,7 @@
     @media (min-width: 661px) {
       @include govuk-responsive-margin(2, "top");
     }
-    @include govuk-responsive-padding(1, "left"); /* size of blue "border" */
+    @include govuk-responsive-padding(1, "left");
     z-index: 1;
   }
 
