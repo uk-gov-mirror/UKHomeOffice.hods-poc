@@ -6,16 +6,11 @@
 
   &__item {
     @include govuk-responsive-padding(2, "bottom");
-    @media (max-width: 660px) {
-      @include govuk-responsive-padding(7, "left");
-    }
-    @media (min-width: 661px) {
-      @include govuk-responsive-padding(5, "left");
-    }
+    padding-left: 22px;
     position: relative;
 
     &:hover {
-      background-color: govuk-colour("light-grey");
+      background-color: govuk-colour("mid-grey");
     }
 
     &:before { /* styling for lines in margin */
@@ -36,12 +31,7 @@
     height: 100%;
     left: 0;
     position: absolute;
-    @media (max-width: 660px) {
-      @include govuk-responsive-margin(1, "top");
-    }
-    @media (min-width: 661px) {
-      @include govuk-responsive-margin(2, "top");
-    }
+    margin-top: 8px;
     @include govuk-responsive-padding(1, "left");
     z-index: 1;
   }
