@@ -33,14 +33,14 @@ export const Timeline: FC<TimelineProps> = ({
   );
   return (
       <div className={classes()}>
-        {items.map(e => (
+        {items ? items.map(e => (
           <div className={classes('item')} key={e.date.getTime()}>
             <h2 className={classes('title')}>{e.action}</h2>
             {!e.by ? null : (<p className={classes('by')}> by {e.by}</p>)}
             <p className={classes('date')}><time dateTime={e.date.toISOString()}>{e.date.toLocaleString('en-GB', { timeZone: 'UTC' })}</time></p>
             <p className={classes('description')}>{e.description}</p>
           </div>
-        ))}
+        )) : null }
       </div>
   );
 };
