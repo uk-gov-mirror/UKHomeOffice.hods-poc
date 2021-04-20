@@ -7,9 +7,6 @@ export type PaginationProps = StandardProps & {
   results: number
   resultsPerPage: number
   page: number
-  previous?: string
-  pages?: number[]
-  next?: string
 };
 
 export const Pagination: FC<PaginationProps> = ({
@@ -19,10 +16,7 @@ export const Pagination: FC<PaginationProps> = ({
   className,
   results,
   resultsPerPage,
-  previous,
   page,
-  pages,
-  next,
   ...attrs
 }) => {
   const classes = classBuilder(
@@ -32,36 +26,40 @@ export const Pagination: FC<PaginationProps> = ({
     className
   );
 
-  var resultsFrom: number = ((page-1)*resultsPerPage)+1
-  var resultsTo: number = resultsFrom + (resultsPerPage - 1)
-  {resultsTo>results ? resultsTo=results : null}
+  page = Number(page); // in case user passes in a string
+  results = Number(results);
+  resultsPerPage = Number(resultsPerPage);
+
+  const resultsFrom = (page - 1) * resultsPerPage + 1;
+  const maxResults = page * resultsPerPage;
+  const maxPages = results / resultsPerPage + 1;
+  const resultsTo = (
+    results < maxResults
+    ? results
+    : maxResults
+  );
+
+  const pages = [page - 2, page - 1, page, page + 1, page + 2];
+  const it = [0,1,2,3,4];
+  const hl = ["?page=" + pages[0], "?page=" + pages[1], "",
+    "?page=" + pages[3], "?page=" + pages[4]];
 
   return (
     <div className={classes()}>
       <div className={classes('summary')}>Showing {resultsFrom} - {resultsTo} of {results} results</div>
       <ul className={classes('list-items')}>
         <li className={classes('item')} id="prevButton">
-          <a className={classes('link')} href="#2">
+          <a className={classes('link')} href={page>1 ? hl[1] : "" }>
             <span aria-hidden="true" role="presentation">&laquo;</span> Previous
           </a>
         </li>
-        <li className={classes('item')}>
-          {page>2 ? <a className={classes('link')} href="#1">{page-2}</a> : null}
-        </li>
-        <li className={classes('item')}>
-          {page>1 ? <a className={classes('link')} href="#2">{page-1}</a> : null}
-        </li>
-        <li className={classes('item')}>
-          <a className={classes('link-current')} href="#3" aria-current="true">{page}</a>
-        </li>
-        <li className={classes('item')}>
-          {resultsTo==results ? null : <a className={classes('link')} href="#4">{page-(-1)}</a>}
-        </li>
-        <li className={classes('item')}>
-          {resultsTo <= results - resultsPerPage ? <a className={classes('link')} href="#5">{page-(-2)}</a> : null}
-        </li>
+        {it.map(i => (
+          <li className={classes('item')}>
+            {pages[i] < 1 || pages[i] > maxPages ? null : <a className={classes(pages[i] === page ? 'link--current' : 'link')} href={hl[i]}>{pages[i]}</a>}
+          </li>
+        ))}
         <li className={classes('item')} id="nextButton">
-          <a className={classes('link')} href="#5">
+          <a className={classes('link')} href={resultsTo==results ? "" : hl[3] }>
             Next <span aria-hidden="true" role="presentation">&raquo;</span>
           </a>
         </li>

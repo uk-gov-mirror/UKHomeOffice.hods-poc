@@ -1,8 +1,7 @@
 Hods - Pagination
-===
+=================
 
-Component to allow separating long tables into separate tables
-
+A component for navigating a long list of results.
 
 Using this package
 ------------------
@@ -21,9 +20,9 @@ import Pagination from '@hods/pagination';
 
 export const MyComponent = props => (
   <Pagination
-    results="[number_of_results]"
-    resultsPerPage="[number_of_results_in_each_page]"
-    page="[page_currently_viewed]"
+    results="250"
+    resultsPerPage="25"
+    page="1"
   />
 );
 

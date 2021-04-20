@@ -79,8 +79,5 @@
   "bugs": {
     "url": "https://github.com/UKHomeOffice/hods-poc/issues"
   },
-  "homepage": "https://github.com/UKHomeOffice/hods-poc#readme",
-  "dependencies": {
-    "@not-govuk/anchor": "^0.2.9"
-  }
+  "homepage": "https://github.com/UKHomeOffice/hods-poc#readme"
 }

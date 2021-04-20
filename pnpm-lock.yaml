@@ -1,5 +1,7 @@
 importers:
   .:
+    dependencies:
+      '@not-govuk/anchor': 0.2.9_609c94966c085296a907b147b2752d64
     devDependencies:
       '@babel/core': 7.11.4
       '@babel/plugin-proposal-export-namespace-from': 7.10.4_@babel+core@7.11.4
@@ -8,7 +10,6 @@ importers:
       '@babel/preset-typescript': 7.10.4_@babel+core@7.11.4
       '@hods/plop-pack': link:lib/plop-pack
       '@mdx-js/react': 1.6.11_react@16.14.0
-      '@not-govuk/anchor': 0.2.9_609c94966c085296a907b147b2752d64
       '@not-govuk/components': 0.2.6_f9151570e7684926ba84f75dc8f166c3
       '@not-govuk/docs-components': 0.2.6_e0b71065dafb84c9aad0ad10a56d88b7
       '@not-govuk/storybook-preset': 0.2.6_8cfa604fd4195d0d5b8248a23054d5f1
