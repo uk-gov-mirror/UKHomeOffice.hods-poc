@@ -21,6 +21,7 @@ export const PageWrap: FC<PageProps> = ({ routes, children }) => {
     <Page
       footerNavigation={navigation}
       navigation={navigation}
+      jsForHtml={true}
       title="My new service"
     >
       {children}

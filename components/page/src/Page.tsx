@@ -1,4 +1,4 @@
-import { FC, ReactNode, createElement as h } from 'react';
+import { FC, Fragment, ReactNode, createElement as h } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { StandardProps, classBuilder } from '@not-govuk/component-helpers';
 import { SkipLink } from '@not-govuk/components';
@@ -22,6 +22,8 @@ export type PageProps = StandardProps & HeaderProps & {
   footerContent?: ReactNode
   /** Title of the HTML page (can be overridden via Helmet  */
   title?: string
+  /** HTML prototyping support (adds the GDS JavaScript) */
+  jsForHtml?: boolean
 };
 
 export const Page: FC<PageProps> = ({
@@ -33,6 +35,7 @@ export const Page: FC<PageProps> = ({
   footerContent,
   footerNavigation,
   navigation,
+  jsForHtml = false,
   serviceHref,
   serviceName: _serviceName,
   signOutHref,
@@ -58,31 +61,42 @@ export const Page: FC<PageProps> = ({
   };
 
   return (
-    <div {...attrs} className={classes()}>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="shortcut icon" sizes="16x16 32x32 48x48" href={favicon} type="image/x-icon" />
-        <link rel="mask-icon" href={maskIcon} color="#0b0c0c" />
-        <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon180} />
-        <link rel="apple-touch-icon" sizes="167x167" href={appleTouchIcon167} />
-        <link rel="apple-touch-icon" sizes="152x152" href={appleTouchIcon152} />
-        <link rel="apple-touch-icon" href={appleTouchIcon} />
-        <meta property="og:image" content={ogImage} />
-      </Helmet>
-      <SkipLink id="skip-link" for="main-content" />
-      <Header {...headerProps} className={classes('header')} />
-      <div className={classes('body')}>
-        <div className={classes('container') + ' hods-width-container'}>
-          <main id="main-content" className={classes('main')} role="main">
-            {children}
-          </main>
+    <Fragment>
+      { !jsForHtml ? null : (
+        <script dangerouslySetInnerHTML={{ __html: 'document.body.className = (document.body.className ? document.body.className + \'js-enabled\' : \'js-enabled\');' }} />
+      ) }
+      <div {...attrs} className={classes()}>
+        <Helmet>
+          <title>{title}</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="theme-color" content="#ffffff" />
+          <link rel="shortcut icon" sizes="16x16 32x32 48x48" href={favicon} type="image/x-icon" />
+          <link rel="mask-icon" href={maskIcon} color="#0b0c0c" />
+          <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon180} />
+          <link rel="apple-touch-icon" sizes="167x167" href={appleTouchIcon167} />
+          <link rel="apple-touch-icon" sizes="152x152" href={appleTouchIcon152} />
+          <link rel="apple-touch-icon" href={appleTouchIcon} />
+          <meta property="og:image" content={ogImage} />
+        </Helmet>
+        <SkipLink id="skip-link" for="main-content" />
+        <Header {...headerProps} className={classes('header')} />
+        <div className={classes('body')}>
+          <div className={classes('container') + ' hods-width-container'}>
+            <main id="main-content" className={classes('main')} role="main">
+              {children}
+            </main>
+          </div>
         </div>
+        <Footer {...footerProps}>{footerContent}</Footer>
       </div>
-      <Footer {...footerProps}>{footerContent}</Footer>
-    </div>
+      { !jsForHtml ? null : (
+        <Fragment>
+          <script src="https://raw.githubusercontent.com/alphagov/govuk-frontend/abe1672b68fe08a55fb3562a684b408a5d452bb0/package/govuk/all.js" />
+          <script dangerouslySetInnerHTML={{ __html: 'window.GOVUKFrontend.initAll();' }} />
+        </Fragment>
+      ) }
+    </Fragment>
   );
 };
 
