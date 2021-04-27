@@ -14,6 +14,7 @@ const appleTouchIcon167 = require('../assets/images/ho-apple-touch-icon-167x167.
 const appleTouchIcon152 = require('../assets/images/ho-apple-touch-icon-152x152.png').default;
 const appleTouchIcon = require('../assets/images/ho-apple-touch-icon.png').default;
 const ogImage = require('../assets/images/ho-opengraph-image.png').default;
+const govUkFrontend = require('../assets/govuk-frontend-3.9.1.min.js').default;
 
 export type PageProps = StandardProps & HeaderProps & {
   /** Footer links */
@@ -34,8 +35,8 @@ export const Page: FC<PageProps> = ({
   className,
   footerContent,
   footerNavigation,
-  navigation,
   jsForHtml = false,
+  navigation,
   serviceHref,
   serviceName: _serviceName,
   signOutHref,
@@ -92,7 +93,7 @@ export const Page: FC<PageProps> = ({
       </div>
       { !jsForHtml ? null : (
         <Fragment>
-          <script src="https://raw.githubusercontent.com/alphagov/govuk-frontend/abe1672b68fe08a55fb3562a684b408a5d452bb0/package/govuk/all.js" />
+          <script src={govUkFrontend} />
           <script dangerouslySetInnerHTML={{ __html: 'window.GOVUKFrontend.initAll();' }} />
         </Fragment>
       ) }
