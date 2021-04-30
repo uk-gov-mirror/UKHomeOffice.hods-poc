@@ -1,0 +1,39 @@
+import { Meta, Preview, Props, Story } from '@not-govuk/docs-components';
+import { SideMenu } from '../src/SideMenu';
+import readMe from '../README.md';
+
+<Meta
+  title="Side menu"
+  component={ SideMenu }
+  parameters={ {
+    chromatic: { viewports: [640, 480] },
+    description: 'Allows the user to switch between groups of related content, and hides content which doesnt need to be visible.',
+    jest: ['SideMenu'],
+    notes: readMe
+  } }
+/>
+
+# Side menu
+
+Allows the user to switch between groups of related content, and hides content which doesnt need to be visible.
+WRITE MORE DESCRIPTION HERE.
+
+<Preview withToolbar>
+  <Story name="SideMenu">
+    <SideMenu />
+  </Story>
+</Preview>
+
+<Props of={ SideMenu } />
+
+
+## Stories
+### Standard
+
+A standard Side menu.
+
+<Preview>
+  <Story name="Standard">
+    <SideMenu />
+  </Story>
+</Preview>
