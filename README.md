@@ -1,3 +1,7 @@
+> **Notice:** This proof of concept is now over. It has been merged into (replaced) the original implementation.
+> 
+> This code repository is now deprecated and all new work should now take place on [the main repository for the Home Office Design System](https://github.com/UKHomeOffice/design-system).
+
 Home Office Design System
 ===
 
